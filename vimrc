@@ -3,21 +3,24 @@ set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/dotfiles/vim/bundle/vundle/Vundle.vim
+call vundle#begin()
 
 " Bundles
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'jelera/vim-javascript-syntax'
+Plugin 'gmarik/vundle'
+Plugin 'kien/ctrlp.vim'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-airline'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'jelera/vim-javascript-syntax'
+
+call vundle#end()
+filetype plugin indent on      " Automatically detect file types
 
 " Filetype indentations
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
@@ -26,7 +29,6 @@ autocmd Filetype html setlocal ts=2 sts=2 sw=2
 
 " General
 set background=dark            " Assume dark background
-filetype plugin indent on      " Automatically detect file types
 syntax on                      " Syntax highlighting
 scriptencoding utf-8
 set history=1000               " Store a ton of history
