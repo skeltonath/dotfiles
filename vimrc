@@ -3,11 +3,11 @@ set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/dotfiles/vim/bundle/vundle/Vundle.vim
+set rtp+=~/dotfiles/vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Bundles
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'scrooloose/nerdtree'
