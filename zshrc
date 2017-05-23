@@ -1,5 +1,4 @@
-source /apollo/env/envImprovement/var/zshrc
-export PATH="$PATH:/apollo/env/eclipse-4.2/bin:/apollo/env/envImprovement/bin"
+export PATH="$PATH:"
 #
 # .zshrc is sourced in interactive shells.
 # It should contain commands to set up aliases,
@@ -17,12 +16,6 @@ compinit
 setopt COMPLETE_IN_WORD
 
 #aliases
-alias bb="brazil-build"
-alias fcdb="sh ~/whidDBFind.sh"
-alias ccserver="bb clean && bb apollo-pkg && sudo runCommand -e AFTCommandCenterWebsite -a Activate"
-alias ccdev="bb clean && bb apollo-pkg && brazil-runtime-exec manage.py runserver dppeppel.desktop.amazon.com:3040"
-alias barkp="bark -ConfigFile=/home/dppeppel/.barkPROD"
-alias barkd="bark -COnfigFile=/home/dppeppel/.barkDEV"
 alias gits="git status"
 alias gitc="git commit"
 
