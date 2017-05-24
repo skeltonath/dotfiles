@@ -1,4 +1,4 @@
-export PATH="$PATH:"
+export PATH="$PATH:/usr/lib/node_modules"
 #
 # .zshrc is sourced in interactive shells.
 # It should contain commands to set up aliases,
@@ -17,7 +17,7 @@ setopt COMPLETE_IN_WORD
 
 #aliases
 alias gits="git status"
-alias gitc="git commit"
+alias gitc="git commit -a -m"
 
 #make term 256 colors
 export TERM=xterm-256color
