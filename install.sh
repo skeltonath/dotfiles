@@ -6,13 +6,13 @@
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="vimrc vim zshrc"           # list of files/folders to symlink in homedir
+dir=$HOME/dotfiles              # dotfiles directory
+olddir=$HOME/dotfiles_old       # old dotfiles backup directory
+files="vimrc vim zshrc"         # list of files/folders to symlink in homedir
 
 ##########
 
-# make sure git is installed
+# make sure git and vim are installed
 command -v git >/dev/null 2>&1 || { echo "git not installed.  Aborting." >&2; exit 1; }
 command -v vim >/dev/null 2>&1 || { echo "vim not installed.  Aborting." >&2; exit 1; }
 
@@ -35,8 +35,26 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+# install base16-shell
+echo -n "Installing base16-shell"
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
+# install antigen for zsh
+echo -n "Installing antigen for zsh"
+curl -L git.io/antigen > antigen.zsh
+
 # install Vundle and plugins for vim
 echo -n "Installing Vundle for vim"
 git clone https://github.com/VundleVim/Vundle.vim.git $dir/vim/bundle/Vundle.vim
 echo -n "Installing vim plugins"
 vim +PluginInstall +qall
+
+# install virtualenvwrapper if python pip are installed
+if command -v python >/dev/null && command -v pip >/dev/null; then
+    echo -n "Installing virtualenv"
+    pip install virtualenv
+    echo -n "Installing virtualenvwrapper"
+    pip install virtualenvwrapper
+else
+    echo -n "python and pip not installed. virtualenvwrapper installation skipped."
+fi

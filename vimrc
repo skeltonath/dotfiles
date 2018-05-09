@@ -16,9 +16,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 filetype plugin indent on      " Automatically detect file types
@@ -27,6 +27,8 @@ filetype plugin indent on      " Automatically detect file types
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype go setlocal ts=8 sts=8 sw=8 noexpandtab
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 
 " General
 set background=dark            " Assume dark background
@@ -66,13 +68,13 @@ map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 
 " Colorscheme settings
-set t_Co=256
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-let g:airline_theme = 'zenburn'
-colorscheme Monokai
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+endif
+let g:airline_theme = 'base16_eighties'
+let g:airline_powerline_fonts = 1
+colorscheme base16-eighties
 
 " nerdtree settings
 map <C-e> <plug>NERDTreeTabsToggle<CR>
