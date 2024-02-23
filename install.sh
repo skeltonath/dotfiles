@@ -6,15 +6,11 @@
 
 ########## Variables
 
-dir=$HOME/dotfiles              # dotfiles directory
-olddir=$HOME/dotfiles_old       # old dotfiles backup directory
-files="vimrc vim zshrc"         # list of files/folders to symlink in homedir
+dir=$HOME/dotfiles                  # dotfiles directory
+olddir=$HOME/dotfiles_old           # old dotfiles backup directory
+files="vimrc vim zshrc zsh_plugins" # list of files/folders to symlink in homedir
 
 ##########
-
-# make sure git and vim are installed
-command -v git >/dev/null 2>&1 || { echo "git not installed.  Aborting." >&2; exit 1; }
-command -v vim >/dev/null 2>&1 || { echo "vim not installed.  Aborting." >&2; exit 1; }
 
 # create dotfiles_old in homedir
 echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
@@ -35,13 +31,21 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+# install homebrew
+echo -n "Installing homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# install git
+echo -n "Installing git"
+brew install git
+
 # install base16-shell
 echo -n "Installing base16-shell"
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
-# install antigen for zsh
-echo -n "Installing antigen for zsh"
-curl -L git.io/antigen > antigen.zsh
+# install antidote for zsh
+echo -n "Installing antidote for zsh"
+git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
 # install Vundle and plugins for vim
 echo -n "Installing Vundle for vim"
@@ -49,12 +53,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git $dir/vim/bundle/Vundle.vim
 echo -n "Installing vim plugins"
 vim +PluginInstall +qall
 
-# install virtualenvwrapper if python pip are installed
-if command -v python >/dev/null && command -v pip >/dev/null; then
-    echo -n "Installing virtualenv"
-    pip install virtualenv
-    echo -n "Installing virtualenvwrapper"
-    pip install virtualenvwrapper
-else
-    echo -n "python and pip not installed. virtualenvwrapper installation skipped."
-fi
+# intall pyenv and latest version of python as default
+echo -n "Installing pyenv"
+brew install pyenv
+echo -n "Install latest python"
+pyenv install 3
+pyenv global 3

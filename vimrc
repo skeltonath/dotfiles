@@ -23,6 +23,13 @@ Plugin 'chriskempson/base16-vim'
 call vundle#end()
 filetype plugin indent on      " Automatically detect file types
 
+" base16 colorscheme
+if exists('$BASE16_THEME')
+      \ && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
+    let base16colorspace=256
+    colorscheme base16-$BASE16_THEME
+endif
+
 " Filetype indentations
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2

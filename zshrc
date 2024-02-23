@@ -1,31 +1,23 @@
-# activate virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# set up pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
-# activate antigen
-source $HOME/dotfiles/antigen.zsh
+# activate antidote
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+antidote load ${ZDOTDIR:-~}/.zsh_plugins
 
-# load oh-mh-zsh libs
-antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle command-not-found
-antigen bundle mafredri/zsh-async
-antigen bundle skeltonath/pure
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Tell Antigen that you're done.
-antigen apply
-
-# Pure prompt settings
+# load pure
 PURE_GIT_DOWN_ARROW="⇩"
 PURE_GIT_UP_ARROW="⇧"
 
 # Set up base16 shell
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        source "$BASE16_SHELL/profile_helper.sh"
+        
+base16_eighties
 
 # Aliases
 alias gits="git status"

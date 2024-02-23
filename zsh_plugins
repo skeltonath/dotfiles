@@ -1,0 +1,20 @@
+# zsh plugins
+
+# completions
+mattmc3/zephyr path:plugins/completion
+
+# oh-my-zsh
+ohmyzsh/ohmyzsh path:lib/directories.zsh
+
+# zsh-utils
+belak/zsh-utils path:editor
+belak/zsh-utils path:history
+belak/zsh-utils path:utility
+
+# prompts
+sindresorhus/pure
+
+# zsh-users
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
