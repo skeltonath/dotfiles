@@ -8,7 +8,7 @@
 
 dir=$HOME/dotfiles                  # dotfiles directory
 olddir=$HOME/dotfiles_old           # old dotfiles backup directory
-files="vimrc vim zshrc zsh_plugins" # list of files/folders to symlink in homedir
+files="vimrc vim zshrc zsh_plugins aliases" # list of files/folders to symlink in homedir
 
 ##########
 
@@ -38,6 +38,15 @@ echo -n "Installing homebrew"
 # install git
 echo -n "Installing git"
 brew install git
+
+# install mcfly
+echo -n "Installing mcfly"
+brew install mcfly
+
+# install fzf
+echo -n "Installing fzf"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --bin
 
 # install base16-shell
 echo -n "Installing base16-shell"

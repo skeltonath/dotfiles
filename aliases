@@ -1,0 +1,12 @@
+# git
+alias gits="git status"
+alias gitc="git commit -a -m"
+alias gith="git checkout"
+alias gitm="git checkout master"
+alias gpsup='git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
+
+# zshrc
+alias edzsh="vim ~/.zshrc"
+function rezsh {
+    source ~/.zshrc
+}
